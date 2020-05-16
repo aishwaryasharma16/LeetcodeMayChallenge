@@ -1,2 +1,2 @@
 # LeetcodeMayChallenge
-Leetcode May Challenge
+My solutions to Leetcode May Challenge

@@ -34,7 +34,7 @@ public:
              copy(begin(p_arr), end(p_arr), begin(t_arr));
             string sub = s.substr(j,p.length());
             isAna=isAnagram(sub,t_arr);
-            //cout<<isAna<<" "<<j<<endl;
+            //cout<<isAna<<""<<j<<endl;
             if(isAna==true)
                 ans.push_back(j);
          }

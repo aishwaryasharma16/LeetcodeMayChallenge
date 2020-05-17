@@ -1,44 +1,21 @@
 //Finding all Anagrams in a string
 class Solution {
-public:
-   /* void printArr(int p[]){
-        for(int i=0;i<26;i++){
-            cout<<p[i]<<" ";
-        }
-        cout<<endl;
-    }*/
-    bool isAnagram(string s, int p[]){
-       // printArr(p);
-        for(int i=0;i<s.length();i++){
-            if(p[s[i]-'a']<=0) return false;
-            else p[s[i]-'a']--;
-        }
-        return true;
-    }
-    vector<int> findAnagrams(string s, string p) {
+  vector<int> findAnagrams(string s, string p) {
+        vector<int> sv(26, 0);
+        vector<int> pv(26, 0);
+        vector<int> res;
         
-       vector<int> ans;
-       if(s.length()<p.length()) return ans;
+        for (auto c : p)
+            pv[c - 'a']++;
         
-       int p_arr[26];
-       int t_arr[26];    
-        memset(p_arr,0,sizeof(p_arr));
-       
-        for(int i=0;i<p.length();i++){
-            p_arr[p[i]-'a']++;
+        for (int i = 0; i < s.size(); i++) {
+            sv[s[i] - 'a']++;
+            if (i >= p.size())
+                sv[s[i - p.size()] - 'a']--;
+            if (sv == pv)
+                res.push_back(i - p.size() + 1);
         }
-       
-      //  printArr(p_arr);
-        bool isAna;
         
-        for(int j=0;j<s.length()-p.length()+1;j++){
-             copy(begin(p_arr), end(p_arr), begin(t_arr));
-            string sub = s.substr(j,p.length());
-            isAna=isAnagram(sub,t_arr);
-            //cout<<isAna<<" "<<j<<endl;
-            if(isAna==true)
-                ans.push_back(j);
-         }
-        return ans;
+        return res;
     }
 };

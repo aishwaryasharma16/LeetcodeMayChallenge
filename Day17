@@ -1,6 +1,4 @@
-//Find All Anagrams in a String
-
-
+//Finding all Anagrams in a string
 class Solution {
 public:
    /* void printArr(int p[]){
@@ -18,7 +16,10 @@ public:
         return true;
     }
     vector<int> findAnagrams(string s, string p) {
+        
        vector<int> ans;
+       if(s.length()<p.length()) return ans;
+        
        int p_arr[26];
        int t_arr[26];    
         memset(p_arr,0,sizeof(p_arr));
@@ -34,7 +35,7 @@ public:
              copy(begin(p_arr), end(p_arr), begin(t_arr));
             string sub = s.substr(j,p.length());
             isAna=isAnagram(sub,t_arr);
-            //cout<<isAna<<""<<j<<endl;
+            //cout<<isAna<<" "<<j<<endl;
             if(isAna==true)
                 ans.push_back(j);
          }
